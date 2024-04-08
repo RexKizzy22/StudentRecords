@@ -69,5 +69,3 @@ To run the script for the student records with extra school codes:
 ```bash
 dotnet run "Samples/SchoolCodesAlpha.csv" "Samples/StudentScoresSchoolExtraCodes.csv"
 ```
-
-## Demo
