@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Records.fs" />
+    <Compile Include="MissingData.fs" />
+    <Compile Include="AbsentExcuse.fs" />
+    <Compile Include="Generics.fs" />
+    <Compile Include="Sequences.fs" />
+    <Compile Include="Dictionary.fs" />
+    <Compile Include="Classes.fs" />
+    <Compile Include="Lists.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+</Project>
