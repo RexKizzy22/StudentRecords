@@ -15,6 +15,9 @@ The only prerequisite is to have the [.NET 8 SDK](https://dotnet.microsoft.com/e
 
 Several scripts are written against particular datasets in the Samples directory.
 
+- Clone this repository
+- Ensure you change directory to the root of the Student Records directory
+
 To run the script for the well-formed student records:
 - Uncomment the ```open Records``` import in ```Program.fs```
 - Uncomment the first ```EntryPoint``` attribute and the commented out ```main``` function in ```Program.fs```
@@ -69,3 +72,9 @@ To run the script for the student records with extra school codes:
 ```bash
 dotnet run "Samples/SchoolCodesAlpha.csv" "Samples/StudentScoresSchoolExtraCodes.csv"
 ```
+
+## DEMO
+[Watch the demo](https://www.youtube.com/embed/E-u8-CRhGBk)
+
+[<img src="https://img.youtube.com/vi/E-u8-CRhGBk/hqdefault.jpg" width="1000" height="600"
+/>](https://www.youtube.com/embed/E-u8-CRhGBk)

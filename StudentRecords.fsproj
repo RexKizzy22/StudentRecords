@@ -12,6 +12,7 @@
     <Compile Include="Dictionary.fs" />
     <Compile Include="Classes.fs" />
     <Compile Include="Lists.fs" />
+    <Compile Include="Bricks.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>
