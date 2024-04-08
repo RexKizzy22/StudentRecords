@@ -8,10 +8,10 @@ missing and unclean data.
 
 Student Records demonstrates the scripting capabilities of the F# language which
 harnesses the incredible perfomance of the .NET runtime and handles domain modeling and 
-data transformations quiet efficiently with its dynamic suite of data structures and sound type system.
+data transformations quite efficiently with its dynamic suite of data structures and sound type system.
 
 ## How to Run Student Records
-The only prerequisite is to have the .NET 8 SDK installed on your machine.
+The only prerequisite is to have the [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download) installed on your machine.
 
 Several scripts are written against particular datasets in the Samples directory.
 
@@ -48,7 +48,7 @@ To run the script for the student records with numeric school codes:
 - Comment out the first ```EntryPoint``` attribute and the following ```main``` function in ```Program.fs```
 - Run the following command in the terminal
 ```bash
-dotnet run "Samples/SchoolCodes.csv" "Sample/StudentScoresSchool.csv"
+dotnet run "Samples/SchoolCodes.csv" "Samples/StudentScoresSchool.csv"
 ```
 
 To run the script for the student records with alphabetic school codes:
@@ -58,7 +58,7 @@ To run the script for the student records with alphabetic school codes:
 - Comment out the first ```EntryPoint``` attribute and the following ```main``` function in ```Program.fs```
 - Run the following command in the terminal
 ```bash
-dotnet run "Samples/SchoolCodesAlpha.csv" "Sample/StudentScoresSchoolAlphaCodes.csv"
+dotnet run "Samples/SchoolCodesAlpha.csv" "Samples/StudentScoresSchoolAlphaCodes.csv"
 ```
 
 To run the script for the student records with extra school codes:
@@ -67,10 +67,7 @@ To run the script for the student records with extra school codes:
 - Comment out the first ```EntryPoint``` attribute and the following ```main``` function in ```Program.fs```
 - Run the following command in the terminal
 ```bash
-dotnet run "Samples/SchoolCodesAlpha.csv" "Sample/StudentScoresSchoolExtraCodes.csv"
+dotnet run "Samples/SchoolCodesAlpha.csv" "Samples/StudentScoresSchoolExtraCodes.csv"
 ```
 
 ## Demo
-[Demo file][Demo]
-
-[Demo]: demo.mov
