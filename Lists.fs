@@ -19,7 +19,7 @@ type ColourHistory(initialColors: seq<Color>, maxLength: int) =
             |> List.truncate maxLength
         colors <- color'
 
-    member this.Trylastest() = 
+    member this.Trylatest() = 
         match colors with 
         | head :: _ -> head |> Some 
         | [] -> None

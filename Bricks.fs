@@ -18,10 +18,10 @@ module Brick =
             | 2 -> ":"
             | _ -> raise <| ArgumentException("Unsupported row count")
         let pattern = String.replicate brick.StudColumns rowChar            
-        printf "%s " (brick.Color.ToString().Substring(0,1))
+        printf $"%s{brick.Color.ToString().Substring(0,1)} "
         Console.BackgroundColor <- brick.Color
         Console.ForegroundColor <- ConsoleColor.Black
-        printf "[%s]" pattern
+        printf $"[%s{pattern}]"
         Console.ResetColor()
         printf " "
 
@@ -58,12 +58,12 @@ printfn "\n"
 
 printfn "Count of the bricks:"
 let count = bricks |> Array.length
-printfn "Count: %i\n" count
+printfn $"Count: %i{count}\n"
 
 printfn "Stud counts:"
 bricks
 |> Array.map (fun b -> b.StudColumns * b.StudRows)
-|> Array.iter (fun c -> printf "%i; " c)
+|> Array.iter (fun c -> printf $"%i{c}; ")
 printfn "\n"
 
 printfn "Red bricks (Array.filter):"
@@ -79,7 +79,7 @@ let groupedByColor =
 
 groupedByColor
 |> Array.iter (fun (color, bricks) ->
-    printfn "%s:" (color.ToString())
+    printfn $"%s{color.ToString()}:"
     bricks
     |> Array.iter Brick.printConsole
     printfn ""
@@ -94,7 +94,7 @@ let groupedByStudCount =
 groupedByStudCount
 |> Array.sortByDescending fst
 |> Array.iter (fun (studCount, bricks) -> 
-    printfn "%i: stud" studCount
+    printfn $"%i{studCount}: stud"
     bricks
     |> Array.iter Brick.printConsole
     printfn "")

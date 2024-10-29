@@ -46,7 +46,7 @@ module Student =
         | [| surname; givenName |] -> {| Surname = surname.Trim(); GivenName = givenName.Trim() |}
         | [| surname |] -> {| Surname = surname.Trim(); GivenName = "(None)" |}
         | _ -> 
-            raise (System.FormatException(sprintf "Invalid name format: \"%s\"" s))
+            raise (System.FormatException $"Invalid name format: \"%s{s}\"")
 
     let fromString (s: string) = 
         let rows = s.Split('\t')
@@ -75,16 +75,14 @@ module Student =
         }
 
     let printSummary student =
-        printfn "%s\t%s\t%s\t%.1f\t%.1f\t%.1f" student.Surname student.GivenName student.Id student.MeanScore student.MaxScore student.MinScore
+        printfn $"%s{student.Surname}\t%s{student.GivenName}\t%s{student.Id}\t%.1f{student.MeanScore}\t%.1f{student.MaxScore}\t%.1f{student.MinScore}"
 
     let printGroupSummary (surname: string, student: Student[]) =
-        printfn "%s" (surname.ToUpperInvariant())
+        printfn $"%s{surname.ToUpperInvariant()}"
         student
         |> Array.sortBy _.GivenName
         |> Array.iter(fun student -> 
-            printfn "\t%20s\t%s\t%0.1f\t%0.1f\t%0.1f\t" 
-                student.GivenName student.Id
-                student.MeanScore student.MaxScore student.MinScore)
+            printfn $"\t%20s{student.GivenName}\t%s{student.Id}\t%0.1f{student.MeanScore}\t%0.1f{student.MaxScore}\t%0.1f{student.MinScore}\t")
 
 // let summarize filePath = 
 //     let rows = File.ReadAllLines filePath
@@ -99,7 +97,7 @@ module Student =
 let summarize filePath = 
     let rows = File.ReadAllLines filePath
     let count = (rows |> Array.length) - 1
-    printfn "Student count: %i" count
+    printfn $"Student count: %i{count}"
     rows 
     |> Array.skip 1
     |> Array.map Student.fromString

@@ -47,7 +47,7 @@ module Student =
         | [| surname; givenName |] -> {| Surname = surname.Trim(); GivenName = givenName.Trim() |}
         | [| surname |] -> {| Surname = surname.Trim(); GivenName = "(None)" |}
         | _ -> 
-            raise (FormatException(sprintf "Invalid name format: \"%s\"" s))
+            raise <| FormatException $"Invalid name format: \"%s{s}\""
 
     let fromString (s: string) = 
         let rows = s.Split('\t')
@@ -76,16 +76,14 @@ module Student =
         }
 
     let printSummary student =
-        printfn "%s\t%s\t%s\t%.1f\t%.1f\t%.1f" student.Surname student.GivenName student.Id student.MeanScore student.MaxScore student.MinScore
+        printfn $"%s{student.Surname}\t%s{student.GivenName}\t%s{student.Id}\t%.1f{student.MeanScore}\t%.1f{student.MaxScore}\t%.1f{student.MinScore}"
 
-    let printGroupSummary (surname: string, student: Student[]) =
-        printfn "%s" (surname.ToUpperInvariant())
-        student
+    let printGroupSummary (surname: string, students: Student[]) =
+        printfn $"%s{surname.ToUpperInvariant()}"
+        students
         |> Array.sortBy _.GivenName
         |> Array.iter(fun student -> 
-            printfn "\t%20s\t%s\t%0.1f\t%0.1f\t%0.1f\t" 
-                student.GivenName student.Id
-                student.MeanScore student.MaxScore student.MinScore)
+            printfn $"\t%20s{student.GivenName}\t%s{student.Id}\t%0.1f{student.MeanScore}\t%0.1f{student.MaxScore}\t%0.1f{student.MinScore}\t")
 
 
 let summarize filePath = 
@@ -94,7 +92,7 @@ let summarize filePath =
         |> File.ReadLines
         |> Seq.cache
     let count = (rows |> Seq.length) - 1
-    printfn "Student count: %i" count
+    printfn $"Student count: %i{count}"
     rows 
     |> Seq.skip 1
     |> Seq.map Student.fromString
@@ -109,7 +107,7 @@ module Dates =
 Dates.from DateTime.Now
 |> Seq.filter (fun i -> i.Month = 1 && i.Day = 1)
 |> Seq.truncate 10
-|> Seq.iter (fun d -> printfn "%i %s" d.Year (d.DayOfWeek.ToString()) )
+|> Seq.iter (fun d -> printfn $"%i{d.Year} %s{d.DayOfWeek.ToString()}" )
 
 
 module PellSequence = 
@@ -141,13 +139,13 @@ module PellSequence =
 
 PellSequence.pell
 |> Seq.truncate 10
-|> Seq.iter (fun x -> printf "%i, " x)
+|> Seq.iter (fun x -> printf $"%i{x}, ")
 
 printfn "..."
 
 
 module Drunkard =
-    let r =Random()
+    let r = Random()
 
     let step () =
         r.Next(-1, 2) 
@@ -164,4 +162,4 @@ module Drunkard =
         
 Drunkard.walk
 |> Seq.take 10
-|> Seq.iter (fun p -> printfn "X: %i, Y: %i" p.X p.Y)
+|> Seq.iter (fun p -> printfn $"X: %i{p.X}, Y: %i{p.Y}")

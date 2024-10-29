@@ -31,12 +31,12 @@ module Student =
         }
 
     let printSummary student =
-        printfn "%s\t%s\t%.1f\t%.1f\t%.1f" student.Name student.Id student.MeanScore student.MaxScore student.MinScore
+        printfn $"%s{student.Name}\t%s{student.Id}\t%.1f{student.MeanScore}\t%.1f{student.MaxScore}\t%.1f{student.MinScore}"
 
 let summarize filePath = 
     let rows = File.ReadAllLines filePath
     let count = (rows |> Array.length) - 1
-    printfn "Student count: %i" count
+    printfn $"Student count: %i{count}"
     rows 
     |> Array.skip 1
     |> Array.map Student.fromString

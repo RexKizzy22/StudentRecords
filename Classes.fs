@@ -28,7 +28,7 @@ type CommandPrompt(message: string, maxTries: int) =
         currentTries <- currentTries + 1
         Console.ForegroundColor <- foreground
         Console.BackgroundColor <- background
-        printf "%s: " trimmedMessage
+        printf $"%s{trimmedMessage}: "
         Console.ResetColor()
         let input = Console.ReadLine()
         if String.IsNullOrEmpty(input) && currentTries < maxTries then
@@ -42,7 +42,7 @@ type CommandPrompt(message: string, maxTries: int) =
 // prompt.BeepOnError <- false
 // prompt.ColorScheme <- ConsoleColor.Cyan, ConsoleColor.DarkGray
 // let name = prompt.GetValue()
-// printfn "Hello %s" name
+// printfn $"Hello %s{name}"
 
 
 type Person(name: string, favoriteColor: string) =
@@ -51,11 +51,11 @@ type Person(name: string, favoriteColor: string) =
             raise <| ArgumentException("Please enter a name")
     
     member this.Description() = 
-        sprintf "Name: %s, Favourite Colour: %s" name favoriteColor
+        $"Name: %s{name}, Favourite Colour: %s{favoriteColor}"
 
 let prompt = CommandPrompt("Please enter your name", 1)
 let name = prompt.GetValue()
-printfn "Hello %s" name
+printfn $"Hello %s{name}"
 
 let favoriteColor = CommandPrompt("What is your favorite colour (Press enter if you don't have one): ", 1)
 let inputColour = prompt.GetValue()
@@ -65,4 +65,4 @@ let colour =
         else inputColour
 
 let person = Person(name, colour)
-printfn "%s" (person.Description())
+printfn $"%s{person.Description()}"
